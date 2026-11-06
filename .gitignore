@@ -1,0 +1,12 @@
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+.coverage
+data/qdrant/
+data/debug_vectors/
+reports/*.html
+reports/*.json
+reports/*.jtl
+reports/*.log
+

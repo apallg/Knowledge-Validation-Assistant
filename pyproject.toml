@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-quality-lab"
+version = "0.1.0"
+description = "可复现的企业知识库 RAG 自动化测试项目"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.30,<1",
+  "python-multipart>=0.0.9,<1",
+  "python-dotenv>=1,<2",
+  "qdrant-client>=1.12,<2",
+  "sentence-transformers>=3,<6",
+  "httpx>=0.27,<1",
+  "PyYAML>=6,<7",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "pytest-html>=4,<5"]
+
+[tool.setuptools.packages.find]
+include = ["app*", "evaluation*", "scripts*", "performance*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "live: requires configured external model API",
+  "real_embedding: downloads or uses cached Chinese embedding model",
+]
+
